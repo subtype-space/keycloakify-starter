@@ -1,24 +1,14 @@
 <p align="center">
-    <i>🚀 <a href="https://keycloakify.dev">Keycloakify</a> v11 starter 🚀</i>
+    <i>🚀 <a href="https://subtype.space">subcloakify</a> a free, tailwindcss v4 based Keycloak theme 🚀</i>
     <br/>
     <br/>
 </p>
 
+![Image of subcloakify login screen](github_assets/subcloakify_1.png)
+
 # Quick start
 
-```bash
-git clone https://github.com/keycloakify/keycloakify-starter
-cd keycloakify-starter
-yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
-```
-
-# Testing the theme locally
-
-[Documentation](https://docs.keycloakify.dev/testing-your-theme)
-
-# How to customize the theme
-
-[Documentation](https://docs.keycloakify.dev/customization-strategies)
+Download the corresponding jar from the releases page, and drop it into your keycloak providers folder. If you use Phase 2 Keycloak, follow their instructions
 
 # Building the theme
 
@@ -32,27 +22,3 @@ The `mvn` command must be in the $PATH.
 ```bash
 npm run build-keycloak-theme
 ```
-
-Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
-You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/targeting-specific-keycloak-versions).
-
-# Initializing the account theme
-
-```bash
-npx keycloakify initialize-account-theme
-```
-
-# Initializing the email theme
-
-```bash
-npx keycloakify initialize-email-theme
-```
-
-# GitHub Actions
-
-The starter comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/keycloakify/keycloakify-starter/releases/tag/v10.0.0).  
-To release a new version **just update the `package.json` version and push**.
-
-To enable the workflow go to your fork of this repository on GitHub then navigate to:
-`Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
