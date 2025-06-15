@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { assert } from "keycloakify/tools/assert";
-import { clsx } from "keycloakify/tools/clsx";
+// import { clsx } from "keycloakify/tools/clsx";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { TemplateProps } from "keycloakify/login/TemplateProps";
 import { getKcClsx } from "keycloakify/login/lib/kcClsx";
@@ -10,6 +10,7 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
+import { AlertCircleIcon, CircleCheck } from "lucide-react";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -69,25 +70,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     return (
         <div className="bg-muted min-h-screen flex flex-col gap-6 items-center justify-center prose dark:prose-invert max-w-none">
             {import.meta.env.LOGO_URL?.trim() && <img src={`${import.meta.env.LOGO_URL}`} width={300} />}
-            <Card className="px-3  md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit ">
-                <CardContent className="space-y-8 pb-5 ">
+            <Card className="px-3 md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit ">
+                <CardContent className="space-y-8 mb-2">
                     <header>
                         {(() => {
                             const node = <div id="kc-page-title">{headerNode}</div>;
-                            // const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
-                            //     <h1 id="kc-page-title">{headerNode}</h1>
-                            // ) : (
-                            //     <div id="kc-username" className={kcClsx("kcFormGroupClass")}>
-                            //         <Label id="kc-attempted-username">{auth.attemptedUsername}</Label>
-                            //         <a id="reset-login" href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
-                            //             <div className="kc-login-tooltip">
-                            //                 <i className={kcClsx("kcResetFlowIcon")}></i>
-                            //                 <span className="kc-tooltip-text">{msg("restartLoginTooltip")}</span>
-                            //             </div>
-                            //         </a>
-                            //     </div>
-                            // );
-
                             if (displayRequiredFields) {
                                 return (
                                     // <div className={kcClsx("kcContentWrapperClass")}>
@@ -111,26 +98,24 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     <div id="kc-content">
                         <div id="kc-content-wrapper">
                             {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-                                <Alert
-                                    className={clsx(
-                                        `alert-${message.type}`,
-                                        kcClsx("kcAlertClass"),
-                                        `pf-m-${message?.type === "error" ? "danger" : message.type}`
-                                    )}
-                                >
-                                    <div className="pf-c-alert__icon">
-                                        {message.type === "success" && <span className={kcClsx("kcFeedbackSuccessIcon")}></span>}
-                                        {message.type === "warning" && <span className={kcClsx("kcFeedbackWarningIcon")}></span>}
-                                        {message.type === "error" && <span className={kcClsx("kcFeedbackErrorIcon")}></span>}
-                                        {message.type === "info" && <span className={kcClsx("kcFeedbackInfoIcon")}></span>}
-                                    </div>
-                                    <AlertDescription
-                                        className="text-md"
-                                        dangerouslySetInnerHTML={{
-                                            __html: kcSanitize(message.summary)
-                                        }}
-                                    />
-                                </Alert>
+                                <div className="alertClass mb-3 px-3 w-full">
+                                    <Alert
+                                        variant={`${message.type}`} // Just added KC specific message types to Alert class
+                                        className="kcAlertClass" // eh
+                                    >
+                                        {message.type === "success" && <CircleCheck />}
+                                        {message.type === "warning" && <AlertCircleIcon />}
+                                        {message.type === "error" && <AlertCircleIcon />}
+                                        {message.type === "info" && <AlertCircleIcon />}
+
+                                        <AlertDescription
+                                            className="text-md"
+                                            dangerouslySetInnerHTML={{
+                                                __html: kcSanitize(message.summary)
+                                            }}
+                                        />
+                                    </Alert>
+                                </div>
                             )}
                             {children}
                             {auth !== undefined && auth.showTryAnotherWayLink && (
