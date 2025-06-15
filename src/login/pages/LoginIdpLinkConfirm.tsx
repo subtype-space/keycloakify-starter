@@ -2,7 +2,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { CardContent, CardDescription, CardTitle, CardHeader } from "@/components/ui/card";
 
 const header = () => {
