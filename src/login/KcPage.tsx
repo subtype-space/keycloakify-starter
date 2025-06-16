@@ -17,6 +17,7 @@ const LoginVerifyEmail = lazy(() => import("./pages/LoginVerifyEmail"));
 const LoginIdpLinkConfirm = lazy(() => import("./pages/LoginIdpLinkConfirm"));
 const LoginUpdateProfile = lazy(() => import("./pages/LoginUpdateProfile"));
 const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
+const SamlPostForm = lazy(() => import("./pages/SamlPostForm"));
 const WebauthnAuthenticate = lazy(() => import("./pages/WebauthnAuthenticate"));
 const WebauthnRegister = lazy(() => import("./pages/WebauthnRegister"));
 const WebauthnError = lazy(() => import("./pages/WebauthnError"));
@@ -121,6 +122,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={false}
                                 UserProfileFormFields={UserProfileFormFields}
                                 doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                            />
+                        );
+                    case "saml-post-form.ftl":
+                        return (
+                            <SamlPostForm
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={false}
                             />
                         );
                     case "webauthn-authenticate.ftl":
