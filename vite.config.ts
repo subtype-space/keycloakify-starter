@@ -9,7 +9,10 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
-            accountThemeImplementation: "none"
+            accountThemeImplementation: "none",
+            environmentVariables: [
+                { name: "LOGO_URL", default: ""}
+            ]
         }),
         tailwindcss()
     ],
