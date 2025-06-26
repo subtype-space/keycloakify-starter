@@ -12,7 +12,7 @@ import { CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from 
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { EyeOff, EyeIcon } from "lucide-react";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import useProviderLogos from "../useProviderLogos";
 
 const providerLogos = useProviderLogos();
@@ -237,7 +237,7 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
                 onClick={toggleIsPasswordRevealed}
             >
                 <i  aria-hidden >
-                    {isPasswordRevealed ? <EyeIcon/> : <EyeOff/>}
+                    {isPasswordRevealed ? <EyeIcon/> : <EyeClosed/>}
                 </i>
             </Button>
         </div>
