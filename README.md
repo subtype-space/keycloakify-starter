@@ -10,6 +10,9 @@
 
 Download the corresponding jar from the releases page, and drop it into your keycloak providers folder. If you use Phase 2 Keycloak, follow their instructions
 
+# Environment variables
+You can specify a URL pointing to your logo to be displayed on the main login page
+
 # Building the theme
 
 You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).  

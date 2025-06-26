@@ -237,7 +237,7 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
                 onClick={toggleIsPasswordRevealed}
             >
                 <i  aria-hidden >
-                    {isPasswordRevealed ? <EyeOff/> : <EyeIcon/>}
+                    {isPasswordRevealed ? <EyeIcon/> : <EyeOff/>}
                 </i>
             </Button>
         </div>
