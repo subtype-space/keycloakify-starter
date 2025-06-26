@@ -69,7 +69,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className="bg-muted min-h-screen flex flex-col gap-6 items-center justify-center prose dark:prose-invert max-w-none">
-            {import.meta.env.LOGO_URL?.trim() && <img src={`${import.meta.env.LOGO_URL}`} width={300} />}
+            
+            {kcContext.properties["LOGO_URL"] && <img alt="logo" src={kcContext.properties["LOGO_URL"]} className="" />}
+
             <Card className="px-3 md:-[40rem] shadow-2xl w-full min-h-screen  md:w-[30rem] sm:min-h-fit ">
                 <CardContent className="space-y-8 mb-2">
                     <header>
